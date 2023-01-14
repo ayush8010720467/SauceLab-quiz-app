@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/SauceLab-quiz-app/static/css/main.b91df4bf.css",
+    "main.js": "/SauceLab-quiz-app/static/js/main.2b5a49af.js",
+    "static/js/787.dff4c071.chunk.js": "/SauceLab-quiz-app/static/js/787.dff4c071.chunk.js",
+    "static/media/Loader.svg": "/SauceLab-quiz-app/static/media/Loader.0f728b14b70c6be5dc227f039c6e305b.svg",
+    "index.html": "/SauceLab-quiz-app/index.html",
+    "main.b91df4bf.css.map": "/SauceLab-quiz-app/static/css/main.b91df4bf.css.map",
+    "main.2b5a49af.js.map": "/SauceLab-quiz-app/static/js/main.2b5a49af.js.map",
+    "787.dff4c071.chunk.js.map": "/SauceLab-quiz-app/static/js/787.dff4c071.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b91df4bf.css",
+    "static/js/main.2b5a49af.js"
+  ]
+}

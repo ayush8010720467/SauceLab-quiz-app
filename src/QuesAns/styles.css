@@ -1,5 +1,6 @@
 .err {
   color: red;
+  font-size: 18px !important;
 }
 .show {
   display: block;

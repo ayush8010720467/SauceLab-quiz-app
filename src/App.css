@@ -1,5 +1,23 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+}
+.night {
+  background-color: #282c34;
+  color: white;
+}
+.mr-3 {
+  margin-right: 30px;
+}
+.mt-3 {
+  margin-top: 30px;
+}
+
+.btn {
+  background-color: azure;
+  border: 1px solid black;
+  box-shadow: 10px 5px 5px rgb(48, 2, 2);
+  font-size: calc(10px + 2vmin);
 }
 
 .App-logo {
@@ -14,14 +32,11 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {

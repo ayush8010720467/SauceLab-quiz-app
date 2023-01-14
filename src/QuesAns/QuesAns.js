@@ -30,14 +30,18 @@ function QuesAns(props) {
   }, [verifyAns, props]);
   return (
     <>
-      <div className="ques">
-        <span>{props.question}</span>
+      <div className="ques">{props.question}</div>
+      <div className="formContainer">
+        <input
+          className="input"
+          ref={inpRef}
+          placeholder="Please add your answer"
+        ></input>
+        <span className={`err ${error}`}>Please Enter The Answer</span>
+        <button className="submit" onClick={onSubmit}>
+          Submit
+        </button>
       </div>
-      <input className="input" ref={inpRef}></input>
-      <span className={`err ${error}`}>Please Enter The Answer</span>
-      <button className="submit" onClick={onSubmit}>
-        Submit
-      </button>
     </>
   );
 }

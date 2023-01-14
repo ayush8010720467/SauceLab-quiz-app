@@ -1,34 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+body {
+  position: relative;
+}
 .App {
   text-align: center;
   min-height: 100vh;
+  background-color: #f0f4f9;
+  font-family: "Roboto", sans-serif;
 }
 .night {
-  background-color: #282c34;
-  color: white;
-}
-.mr-3 {
-  margin-right: 30px;
-}
-.mt-3 {
-  margin-top: 30px;
+  background-color: #0a192f;
+  color: #ccd6f6;
 }
 
+main {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
 .btn {
-  background-color: azure;
-  border: 1px solid black;
-  box-shadow: 10px 5px 5px rgb(48, 2, 2);
-  font-size: calc(10px + 2vmin);
+  border: 1px solid #fb641b;
+  border-radius: 4px;
+  color: #fb641b;
+  background-color: white;
+  padding: 15px 30px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.quesAns {
+  background-color: #fff;
+  width: 700px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: -1px 1px 20px -1px #ccc;
+  border: 1px solid #dadce0;
+  min-height: 179px;
 }
 
 .App-header {
@@ -36,18 +46,38 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  font-size: calc(10px + 2vmin);
+  font-size: 20px;
+  width: 100%;
+  background-color: white;
+  padding: 30px 0;
+  box-shadow: -1px 0px 10px 2px #ccc;
 }
 
+.night .App-header {
+  background-color: #172a46;
+  box-shadow: 2px 2px 20px 2px #070a0f;
+}
+
+.night .quesAns {
+  background-color: #172a46;
+  box-shadow: 2px 2px 20px 2px #070a0f;
+  border: 1px solid #070a0f;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  gap: 20px;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+.night .btn {
+  border: 1px solid #62fad6;
+  color: #62fad6;
+  background-color: transparent;
+}
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

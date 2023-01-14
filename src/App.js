@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import Loader from "./assets/Loader.svg";
 import "./App.css";
 import { useState, useEffect, useCallback } from "react";
 import QuesAns from "./QuesAns/QuesAns";
@@ -6,15 +6,13 @@ import axios from "axios";
 import { data as staticData } from "./data";
 
 function App() {
+  const [isGameOver, setGameOver] = useState(false);
+  const [loader, setLoaded] = useState(true);
   const [score, setScore] = useState(0);
   const [chanceCount, setChanceCount] = useState(3);
   const [isNightMode, setNightMode] = useState(false);
   const [data, setData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const toggleNightMode = useCallback(() => {
-    setNightMode((isNightMode) => !isNightMode);
-  }, [setNightMode]);
 
   const getData = useCallback(() => {
     axios
@@ -23,9 +21,11 @@ function App() {
         setData((d) => {
           return [...d, ...data?.data?.questions];
         });
+        setLoaded(false);
       })
       .catch((error) => {
         setData(staticData);
+        setLoaded(false);
       });
   }, [setData]);
 
@@ -34,6 +34,15 @@ function App() {
       getData();
     }
   }, [currentIndex, data]);
+
+  useEffect(() => {
+    if (chanceCount === 0) {
+      setGameOver(true);
+    }
+  }, [chanceCount]);
+  const toggleNightMode = useCallback(() => {
+    setNightMode((isNightMode) => !isNightMode);
+  }, [setNightMode]);
 
   const incrementCurrentIndex = useCallback(() => {
     setCurrentIndex((index) => index + 1);
@@ -61,14 +70,17 @@ function App() {
   return (
     <div className={isNightMode ? "App night" : "App"}>
       <header className="App-header">
-        <span className="mr-3 mt-3">Score: {score}</span>
-        <span className="mr-3 mt-3">Chances Left: {chanceCount}</span>
-        <button className="mr-3 mt-3 btn" onClick={toggleNightMode}>
-          {isNightMode ? "Light Mode" : "Dark Mode"}
-        </button>
+        <div className="header-container">
+          <span>Score: {score}</span>
+          <span>Chances Left: {chanceCount}</span>
+          <button className="btn" onClick={toggleNightMode}>
+            {isNightMode ? "Light Mode" : "Dark Mode"}
+          </button>
+        </div>
       </header>
       <main>
         <section className="quesAns">
+          {loader && <img src={Loader} alt="loader" height="150" width="150" />}
           {data[currentIndex] ? (
             <QuesAns
               question={data[currentIndex].question}

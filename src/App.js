@@ -3,6 +3,7 @@ import "./App.css";
 import { useState, useEffect, useCallback } from "react";
 import QuesAns from "./QuesAns/QuesAns";
 import axios from "axios";
+import { data as staticData } from "./data";
 
 function App() {
   const [score, setScore] = useState(0);
@@ -16,11 +17,16 @@ function App() {
   }, [setNightMode]);
 
   const getData = useCallback(() => {
-    axios.get("https://eok9ha49itquif.m.pipedream.net/").then((data) => {
-      setData((d) => {
-        return [...d, ...data?.data?.questions];
+    axios
+      .get("https://eok9ha49itquif.m.pipedream.net/")
+      .then((data) => {
+        setData((d) => {
+          return [...d, ...data?.data?.questions];
+        });
+      })
+      .catch((error) => {
+        setData(staticData);
       });
-    });
   }, [setData]);
 
   useEffect(() => {

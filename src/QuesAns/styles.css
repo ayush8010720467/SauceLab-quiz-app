@@ -29,22 +29,3 @@
   padding-left: 10px;
   box-sizing: border-box;
 }
-
-.submit {
-  background: #fb641b;
-  border: 0px;
-  color: white;
-  width: 100%;
-  padding: 13px;
-  font-size: 18px;
-  border-radius: 4px;
-  font-weight: 500;
-  height: 50px;
-  font-family: "Roboto", sans-serif;
-  cursor: pointer;
-}
-.night .submit {
-  background: transparent;
-  border: 1px solid #62fad6;
-  color: #62fad6;
-}

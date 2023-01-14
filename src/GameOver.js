@@ -1,8 +1,11 @@
 function GameOver(props) {
   return (
     <>
-      <span>Score: {props.score}</span>
-      <button>Restart Game</button>
+      <span className="score-txt">Score: </span>
+      <span className="score-go">{props.score}</span>
+      <button onClick={props.restart} className="submit restart">
+        Restart Game
+      </button>
     </>
   );
 }

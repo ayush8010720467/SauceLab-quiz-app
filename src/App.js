@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import QuesAns from "./QuesAns/QuesAns";
 import axios from "axios";
 import { data as staticData } from "./data";
+import GameOver from "./GameOver";
 
 function App() {
   const [isGameOver, setGameOver] = useState(false);
@@ -57,7 +58,6 @@ function App() {
   }, [setChanceCount]);
 
   const onCorrectAns = useCallback(() => {
-    console.log("onCorrectAns");
     incrementScore();
     incrementCurrentIndex();
   }, [incrementScore, incrementCurrentIndex]);
@@ -66,6 +66,15 @@ function App() {
     decrementChance();
     incrementCurrentIndex();
   }, [decrementChance, incrementCurrentIndex]);
+
+  const restart = useCallback(() => {
+    setScore(0);
+    setChanceCount(3);
+    setData([]);
+    setLoaded(true);
+    setCurrentIndex(0);
+    setGameOver(false);
+  }, []);
 
   return (
     <div className={isNightMode ? "App night" : "App"}>
@@ -81,14 +90,15 @@ function App() {
       <main>
         <section className="quesAns">
           {loader && <img src={Loader} alt="loader" height="150" width="150" />}
-          {data[currentIndex] ? (
+          {isGameOver && <GameOver score={score} restart={restart}></GameOver>}
+          {!loader && !isGameOver && data[currentIndex] && (
             <QuesAns
               question={data[currentIndex].question}
               ansSha={data[currentIndex].answerSha1}
               onCorrectAns={onCorrectAns}
               onWrongAns={onWrongAns}
             ></QuesAns>
-          ) : null}
+          )}
         </section>
       </main>
     </div>

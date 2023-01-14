@@ -20,7 +20,19 @@ function App() {
       .get("https://eok9ha49itquif.m.pipedream.net/")
       .then((data) => {
         setData((d) => {
-          return [...d, ...data?.data?.questions];
+          let res = [];
+          data?.data?.questions.forEach((elem1) => {
+            let flag = false;
+            d.forEach((elem2) => {
+              if (elem2.question === elem1.question) {
+                flag = true;
+              }
+            });
+            if (!flag) {
+              res.push(elem1);
+            }
+          });
+          return [...d, ...res];
         });
         setLoaded(false);
       })
@@ -34,7 +46,7 @@ function App() {
     if (currentIndex + 1 >= data.length) {
       getData();
     }
-  }, [currentIndex, data]);
+  }, [currentIndex, data, getData]);
 
   useEffect(() => {
     if (chanceCount === 0) {
